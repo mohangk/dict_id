@@ -28,7 +28,7 @@ dict_exclude_lexize(PG_FUNCTION_ARGS)
 
   res[0].lexeme = pnstrdup(in, PG_GETARG_INT32(2)) ;
   /* stem_singular_word(res[0].lexeme, &(res[1].lexeme)); */
-  res[1].lexeme = pnstrdup(in, PG_GETARG_INT32(2)) ;
+  res[1].lexeme = pnstrdup("hohoman",8);
 
 
   PG_RETURN_POINTER(res);
