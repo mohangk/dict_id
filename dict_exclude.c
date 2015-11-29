@@ -23,17 +23,13 @@ dict_exclude_lexize(PG_FUNCTION_ARGS)
 {
   char     *in = (char *) PG_GETARG_POINTER(1);
   TSLexeme   *res;
-  res = palloc0(sizeof(TSLexeme) * 3);
+  res = palloc0(sizeof(TSLexeme) * 2);
   char *stemmed;
 
   dictionary_load(dictionary_fullpath("data/kata-dasar.txt"));
-  /* stem_singular_word(res[0].lexeme, &stemmed); */
 
-  res[0].lexeme = pnstrdup(in, PG_GETARG_INT32(2)) ;
-  /* res[1].lexeme = pnstrdup("haha", 5); */
-  /* elog(INFO, "value here is %s", stemmed); */
-  res[1].lexeme = pnstrdup("hohoman",8);
-
+  stem_singular_word(in, &stemmed);
+  res[0].lexeme = pnstrdup(stemmed,strlen(stemmed));
 
   PG_RETURN_POINTER(res);
 }
