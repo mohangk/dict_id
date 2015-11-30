@@ -15,11 +15,11 @@
 
 PG_MODULE_MAGIC;
 
-PG_FUNCTION_INFO_V1(dict_exclude_lexize);
+PG_FUNCTION_INFO_V1(dict_id_lexize);
 
 
 Datum
-dict_exclude_lexize(PG_FUNCTION_ARGS)
+dict_id_lexize(PG_FUNCTION_ARGS)
 {
   char     *in = (char *) PG_GETARG_POINTER(1);
   TSLexeme   *res;
