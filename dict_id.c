@@ -21,14 +21,17 @@ PG_FUNCTION_INFO_V1(dict_id_lexize);
 Datum
 dict_id_lexize(PG_FUNCTION_ARGS)
 {
-  char     *in = (char *) PG_GETARG_POINTER(1);
-  TSLexeme   *res;
-  res = palloc0(sizeof(TSLexeme) * 2);
+  char *in = (char *) PG_GETARG_POINTER(1);
+  char *word = pnstrdup(in, PG_GETARG_INT32(2));
+  TSLexeme   *res = palloc0(sizeof(TSLexeme) * 2);
+
   char *stemmed;
 
   dictionary_load(dictionary_fullpath("data/kata-dasar.txt"));
 
-  stem_singular_word(in, &stemmed);
+  stem_singular_word(word, &stemmed);
+
+  elog(INFO, "ori word: %s stemmed word: %s", word, stemmed);
   res[0].lexeme = pnstrdup(stemmed,strlen(stemmed));
 
   PG_RETURN_POINTER(res);

@@ -3,4 +3,4 @@ Ensure kata-dasar.txt file is copied into the extension directory
 Create dict_id_init to call dictionary_load
 Remove need to include regex/ dir
 Remove hardcoding of path to sastrawi source dir from Makefile
-
+Change name from dict_id to indonesian_stem

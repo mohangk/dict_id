@@ -40,7 +40,7 @@ Add new psql binary to path
 $ export PATH=/usr/local/pgsql/bin:$PATH
 ```
 
-### Install the extenstion
+### Install the extension
 
 In the extension dir run
 
